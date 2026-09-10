@@ -1,595 +1,954 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Stephen Kingsley Femi, Technical Project Manager portfolio">
+<meta name="theme-color" content="#07110d">
+<title>Stephen Kingsley Femi, Technical Project Manager</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-<!-- SEO Meta Tags -->
-<title>venix cloud - B2B Vending API Platform | Integrated Cloud Solutions</title>
-<meta name="description" content="venix cloud provides enterprise grade B2B vending APIs for digital businesses across Africa. Integrate seamlessly, manage effortlessly, and scale infinitely with our cloud native platform." />
-<meta name="keywords" content="Vending API, cloud platform Africa, enterprise API, digital vending, API integration, dashboard management, cloud infrastructure" />
-<meta name="author" content="Venix Cloud" />
-<meta name="robots" content="index, follow" />
-
-<!-- Open Graph Meta Tags -->
-<meta property="og:title" content="venix cloud - B2B Vending API Platform" />
-<meta property="og:description" content="Enterprise grade B2B vending APIs for digital businesses. Integrate seamlessly and manage your operations with ease." />
-<meta property="og:image" content="https://client.venix.cloud/assets/images/venix/logo.dark.png" />
-<meta property="og:url" content="https://venix.cloud" />
-<meta property="og:type" content="website" />
-
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="venix cloud - B2B Vending API Platform" />
-<meta name="twitter:description" content="Enterprise-grade B2B vending APIs for digital businesses across Africa." />
-<meta name="twitter:image" content="https://client.venix.cloud/assets/images/venix/logo.dark.png" />
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="image.png" />
-<link rel="apple-touch-icon" href="image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg-dark: #020617;
-  --bg-mid: #0b1220;
-  --bg-light: #f8fafc;
-  --primary: #38bdf8;
-  --text-dark: #0f172a;
-  --text-muted: #64748b;
-  --white: #ffffff;
+:root{
+  --bg:#f4f6f2;--paper:#fbfcfa;--ink:#0a120e;--muted:#68736d;
+  --line:#d9e0db;--green:#0d5a42;--green2:#15906a;--mint:#dff2e9;
+  --dark:#07110d;--white:#fff;--shadow:0 30px 100px rgba(7,24,16,.13);
+  --radius:28px;--ease:cubic-bezier(.22,1,.36,1);
+
+  --nav-bg:rgba(250,252,249,.78);--nav-bg-scrolled:rgba(250,252,249,.94);
+  --nav-border:rgba(255,255,255,.55);--nav-text:#4f5c55;--nav-hover-bg:#eaf0ec;
+  --card-shadow:0 12px 45px rgba(7,24,16,.035);
+  --glow-color:rgba(33,154,112,.08);--glow-blend:multiply;
+
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --bg:#0a0f0c;--paper:#121a16;--ink:#eef3ef;--muted:#93a39b;
+  --line:#243029;--green:#3ddb9d;--green2:#2bb583;--mint:#12291f;
+  --shadow:0 30px 100px rgba(0,0,0,.55);
+
+  --nav-bg:rgba(15,20,17,.78);--nav-bg-scrolled:rgba(15,20,17,.94);
+  --nav-border:rgba(255,255,255,.09);--nav-text:#9aa9a1;--nav-hover-bg:#1a221d;
+  --card-shadow:0 20px 55px rgba(0,0,0,.35);
+  --glow-color:rgba(61,219,157,.13);--glow-blend:screen;
+
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden;transition:background .4s var(--ease),color .4s var(--ease)}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+::selection{background:#bfe6d4;color:#06110c}
+.page{width:min(1180px,calc(100% - 8vw));margin:auto}
+
+/* NAVIGATION */
+.topbar{
+  position:fixed;top:18px;left:50%;transform:translateX(-50%);
+  width:min(1150px,calc(100% - 9vw));height:68px;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 10px 0 16px;border:1px solid var(--nav-border);
+  background:var(--nav-bg);backdrop-filter:blur(22px);
+  border-radius:999px;box-shadow:0 12px 45px rgba(7,25,16,.08);
+  transition:.4s var(--ease)
+}
+.topbar.scrolled{background:var(--nav-bg-scrolled);box-shadow:0 15px 55px rgba(7,25,16,.12)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-family:Manrope}
+.brand-mark{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--dark);font-size:12px;letter-spacing:-.04em}
+.brand-name{font-size:14px}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{padding:11px 15px;border-radius:999px;font-size:13px;color:var(--nav-text);transition:.25s}
+.nav a:hover,.nav a.active{background:var(--nav-hover-bg);color:var(--ink)}
+.nav .nav-cta{background:var(--dark);color:#fff;padding:12px 18px}
+.nav .nav-cta:hover{background:var(--green)}
+.icon-btn{
+  width:40px;height:40px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+  border:1px solid var(--nav-border);background:transparent;color:var(--nav-text);
+  cursor:pointer;transition:.25s;font:700 11px "Space Mono"
+}
+.icon-btn:hover{background:var(--nav-hover-bg);color:var(--ink)}
+.icon-btn svg{width:17px;height:17px;stroke:currentColor}
+#themeToggle .icon-moon{display:none}
+[data-theme="dark"] #themeToggle .icon-sun{display:none}
+[data-theme="dark"] #themeToggle .icon-moon{display:block}
+
+/* HERO */
+main{padding-top:108px}
+.hero{
+  min-height:calc(100svh - 128px);position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;border-radius:34px;
+  background:#0b1712 linear-gradient(135deg,#0f2a20,#07110d 70%);
+  box-shadow:var(--shadow);isolation:isolate;margin-bottom:20px
+}
+.hero-bg-image{position:absolute;inset:0 0 0 0;z-index:0}
+.hero-bg-image img{
+  width:100%;height:100%;display:block;object-fit:cover;
+  object-position:28% 33%;transform:scale(1.01);
+  filter:saturate(.9) contrast(1.03);
+  transition:transform 1.2s var(--ease),filter .7s var(--ease),opacity .5s var(--ease);
+  opacity:0
+}
+.hero-bg-image img.is-loaded{opacity:1}
+.hero:hover .hero-bg-image img{transform:scale(1.025);filter:saturate(.96) contrast(1.04)}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(90deg,rgba(4,14,10,.92) 0%,rgba(4,14,10,.74) 34%,rgba(4,14,10,.28) 52%,rgba(4,14,10,.05) 72%),
+    linear-gradient(0deg,rgba(4,14,10,.78) 0%,rgba(4,14,10,.18) 45%,transparent 75%)
+}
+.hero-copy{
+  position:relative;z-index:3;width:100%;max-width:600px;
+  padding:clamp(90px,12vw,140px) clamp(28px,5vw,70px) 48px;
+  color:#fff;display:flex;flex-direction:column;justify-content:flex-end
+}
+.eyebrow{
+  display:inline-flex;align-items:center;width:max-content;
+  font:700 10px/1 "Space Mono";letter-spacing:.12em;text-transform:uppercase;
+  color:#bcebd7;margin-bottom:18px
+}
+.hero h1{
+  font:800 clamp(42px,5.6vw,72px)/.96 Manrope;
+  letter-spacing:-.06em;margin:0;max-width:520px
+}
+.hero-title-accent{display:block;color:#72dfb5}
+.hero-lede{
+  max-width:590px;color:rgba(255,255,255,.78);
+  font-size:16px;line-height:1.55;margin:21px 0 23px
+}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  min-height:51px;padding:0 21px;border-radius:999px;font-weight:700;font-size:13px;
+  overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s,background .35s
+}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:#fff;color:var(--dark);box-shadow:0 14px 30px rgba(0,0,0,.14)}
+.btn-primary:hover{background:#72dfb5;box-shadow:0 18px 36px rgba(13,90,66,.25)}
+.btn-secondary{
+  color:#fff;border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.09);backdrop-filter:blur(12px)
+}
+.btn-secondary:hover{background:rgba(255,255,255,.18)}
+.btn span{font-size:17px}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:27px;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.2);
+  font:10px "Space Mono";color:rgba(255,255,255,.58);
+  text-transform:uppercase;letter-spacing:.05em
+}
+.hero-meta span+span::before{content:"/";margin-right:24px;color:rgba(255,255,255,.3)}
+.hero-label{
+  position:absolute;right:28px;top:28px;z-index:4;
+  color:rgba(255,255,255,.7);font:10px "Space Mono";letter-spacing:.12em
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* GENERAL SECTIONS */
+.section{padding:130px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:52px}
+.section-kicker{font:11px "Space Mono";color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:15px}
+.section-title{font:800 clamp(42px,5vw,70px)/.98 Manrope;letter-spacing:-.06em;margin:0;max-width:760px}
+.section-intro{max-width:560px;color:var(--muted);line-height:1.7;font-size:16px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:30px}
+.metric{padding:27px 22px;min-height:142px}
+.metric+.metric{border-left:1px solid var(--line)}
+.metric-number{font:800 38px Manrope;letter-spacing:-.05em;color:var(--green)}
+.metric-label{display:block;margin-top:8px;color:var(--muted);font-size:12px}
+
+/* EXPERIENCE */
+.experience-list{display:grid;gap:0}
+.job{display:grid;grid-template-columns:260px 1fr;gap:50px;padding:43px 0;border-top:1px solid var(--line)}
+.job:last-child{border-bottom:1px solid var(--line)}
+.job-date{font:11px "Space Mono";color:var(--muted);letter-spacing:.05em}
+.job-date small{display:block;margin-top:9px;font:12px "DM Sans";line-height:1.5;color:var(--muted)}
+.job h3{font:800 29px Manrope;letter-spacing:-.035em;margin:0 0 5px}
+.company{font-size:13px;color:var(--green);margin-bottom:22px}
+.job ul{padding:0;margin:0;list-style:none;display:grid;gap:10px;max-width:780px}
+.job li{position:relative;padding-left:23px;color:var(--muted);line-height:1.65;font-size:14px}
+.job li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:1px;background:var(--green)}
+.tag{display:inline-block;margin-top:23px;padding:7px 10px;border-radius:999px;background:var(--mint);color:var(--green);font:10px "Space Mono";text-transform:uppercase}
+
+/* PRODUCTS */
+.dark-panel{position:relative;background:var(--dark);color:#fff;border-radius:36px;padding:105px 7%;overflow:hidden}
+.dark-panel::before{content:"PRODUCT";position:absolute;right:-4%;top:20px;font:800 17vw Manrope;letter-spacing:-.09em;color:rgba(255,255,255,.025)}
+.dark-panel .section-kicker{color:#6ee1b5}
+.dark-panel .section-intro{color:#aab8b1}
+.product-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
+.product{
+  min-height:330px;padding:30px;border:1px solid rgba(255,255,255,.1);border-radius:26px;
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  display:flex;flex-direction:column;transition:.5s var(--ease)
+}
+.product:hover{transform:translateY(-8px);border-color:rgba(110,225,181,.4)}
+.product-top{display:flex;justify-content:space-between;align-items:center}
+.product-name{font:800 34px Manrope;letter-spacing:-.05em}
+.product-year{font:10px "Space Mono";color:#789087}
+.product-type{margin-top:10px;color:#6ee1b5;font-size:12px}
+.product p{color:#aab8b1;line-height:1.7;font-size:14px;max-width:620px;margin-top:28px}
+.product-foot{margin-top:auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font:10px "Space Mono";color:#87978f}
+
+/* PIPELINE */
+.pipeline{margin-top:52px}
+.pipeline-svg{width:100%;height:34px;display:block;overflow:visible}
+.pipeline-svg path{fill:none;stroke:var(--line);stroke-width:2}
+.pipeline-svg #pipelineProgress{stroke:var(--green2);stroke-width:3;stroke-linecap:round}
+.pipeline-svg .pipeline-dot{fill:var(--green2)}
+.pipeline-nodes{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.pipeline-node{
+  flex:1 1 170px;min-width:150px;padding:18px 16px;border:1px solid var(--line);
+  border-radius:18px;background:var(--paper);font-size:12px;color:var(--muted);
+  display:flex;flex-direction:column;gap:12px;transition:.35s var(--ease)
+}
+.pipeline-node:hover{border-color:var(--green2);transform:translateY(-3px)}
+.pipeline-node span{
+  width:26px;height:26px;border-radius:50%;background:var(--mint);color:var(--green);
+  display:grid;place-items:center;font:700 11px "Space Mono"
 }
 
-body {
-  font-family: Inter, system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  background: var(--white);
-  color: var(--text-dark);
+/* CAPABILITIES / EDUCATION */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:42px;box-shadow:var(--card-shadow)}
+.competencies{margin-top:36px}
+.competency{display:grid;grid-template-columns:180px 1fr;gap:25px;padding:19px 0;border-top:1px solid var(--line)}
+.competency strong{font:700 13px Manrope}
+.competency span{color:var(--muted);font-size:13px;line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:30px}
+.chip{border:1px solid var(--line);padding:8px 11px;border-radius:999px;font:10px "Space Mono";color:var(--muted);background:var(--paper)}
+.education{display:grid;gap:7px;padding:25px 0 30px;border-bottom:1px solid var(--line)}
+.education strong{font:800 25px Manrope;letter-spacing:-.04em}
+.education span{font-size:13px;color:var(--muted)}
+.honour{display:inline-block;width:max-content;padding:7px 9px;background:var(--mint);color:var(--green)!important;font:10px "Space Mono"!important;margin-top:8px}
+.certs{display:grid;margin-top:15px}
+.cert{display:grid;grid-template-columns:55px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px}
+.cert b{font:10px "Space Mono";color:var(--green)}
+.cert span{color:var(--muted)}
+
+/* CONTACT / FOOTER */
+.contact{
+  margin:20px 0 80px;padding:95px 8%;border-radius:36px;
+  background:linear-gradient(135deg,#0b5c43,#07110d);color:#fff;
+  position:relative;overflow:hidden
+}
+.contact::after{content:"";position:absolute;width:480px;height:480px;border-radius:50%;right:-180px;top:-220px;background:radial-gradient(circle,rgba(65,220,163,.3),transparent 65%)}
+.contact>*{position:relative;z-index:2}
+.contact .section-kicker{color:#6ee1b5}
+.contact h2{font:800 clamp(45px,6vw,78px)/.98 Manrope;letter-spacing:-.065em;max-width:850px;margin:0}
+.contact p{max-width:650px;color:#b3c1ba;line-height:1.7;margin:25px 0 30px}
+.contact-actions{display:flex;gap:10px;flex-wrap:wrap}
+.contact .btn-primary{background:#fff;color:var(--dark)}
+.contact .btn-secondary{color:#fff;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.05)}
+.copy-email{cursor:pointer;border:1px solid rgba(255,255,255,.2)}
+footer{display:flex;justify-content:space-between;gap:20px;padding:0 0 40px;color:var(--muted);font:10px "Space Mono";letter-spacing:.03em;text-transform:uppercase}
+footer a:hover{color:var(--green)}
+
+/* BACK TO TOP */
+.back-to-top{
+  position:fixed;right:24px;bottom:24px;z-index:55;width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--nav-border);background:var(--nav-bg-scrolled);color:var(--ink);
+  backdrop-filter:blur(14px);display:grid;place-items:center;cursor:pointer;
+  box-shadow:0 14px 30px rgba(0,0,0,.14);
+  opacity:0;pointer-events:none;transform:translateY(12px);
+  transition:opacity .35s var(--ease),transform .35s var(--ease)
+}
+.back-to-top.is-visible{opacity:1;pointer-events:auto;transform:none}
+.back-to-top svg{width:18px;height:18px;stroke:currentColor}
+
+/* COMMAND PALETTE */
+.cmdk-overlay{
+  position:fixed;inset:0;z-index:80;display:flex;align-items:flex-start;justify-content:center;
+  padding:14vh 20px 20px;background:rgba(4,10,7,.55);backdrop-filter:blur(6px);
+  opacity:0;pointer-events:none;transition:opacity .25s var(--ease)
+}
+.cmdk-overlay.is-open{opacity:1;pointer-events:auto}
+.cmdk-panel{
+  width:min(560px,100%);max-height:60vh;display:flex;flex-direction:column;
+  background:var(--paper);border:1px solid var(--line);border-radius:20px;
+  box-shadow:0 40px 100px rgba(0,0,0,.35);overflow:hidden;
+  transform:translateY(-10px) scale(.98);transition:transform .25s var(--ease)
+}
+.cmdk-overlay.is-open .cmdk-panel{transform:none}
+.cmdk-input{
+  border:none;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);
+  padding:18px 20px;font:15px "DM Sans";outline:none
+}
+.cmdk-input::placeholder{color:var(--muted)}
+.cmdk-list{overflow-y:auto;padding:8px}
+.cmdk-item{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border:none;background:transparent;color:var(--ink);text-align:left;
+  padding:12px 12px;border-radius:12px;cursor:pointer;font-size:14px
+}
+.cmdk-item small{color:var(--muted);font:10px "Space Mono";text-transform:uppercase;letter-spacing:.05em}
+.cmdk-item:hover,.cmdk-item.is-active{background:var(--nav-hover-bg)}
+.cmdk-item[hidden]{display:none}
+.cmdk-foot{
+  display:flex;gap:16px;padding:10px 18px;border-top:1px solid var(--line);
+  font:10px "Space Mono";color:var(--muted);text-transform:uppercase;letter-spacing:.05em
 }
 
-/* UTILITIES */
-section {
-  padding: 100px 20px;
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(28px)}
+.reveal.is-visible{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.delay-1.is-visible{transition-delay:.08s}
+.delay-2.is-visible{transition-delay:.16s}
+.delay-3.is-visible{transition-delay:.24s}
+.cursor-glow{
+  position:fixed;z-index:1;width:340px;height:340px;border-radius:50%;
+  pointer-events:none;background:radial-gradient(circle,var(--glow-color),transparent 68%);
+  transform:translate(-50%,-50%);mix-blend-mode:var(--glow-blend)
+}
+#aurora{position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}
+.scroll-progress{position:fixed;z-index:70;left:0;top:0;height:2px;width:0;background:linear-gradient(90deg,var(--green2),#8fe8c4)}
+
+/* TABLET */
+@media(max-width:950px){
+  .page{width:min(100% - 28px,1180px)}
+  .hero{min-height:calc(100svh - 104px);border-radius:26px}
+  .hero-copy{max-width:560px;padding:90px 30px 30px}
+  .hero h1{font-size:clamp(40px,7vw,60px)}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+  .metric:nth-child(3){border-left:0;border-top:1px solid var(--line)}
+  .metric:nth-child(4){border-top:1px solid var(--line)}
+  .product-grid,.two-col{grid-template-columns:1fr}
+  .section-head{display:block}
+  .section-intro{margin-top:20px}
+  .job{grid-template-columns:1fr;gap:12px}
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
+/* MOBILE */
+@media(max-width:650px){
+  .page{width:calc(100% - 20px)}
+  .topbar{width:calc(100% - 16px);top:8px;height:58px;padding-left:13px}
+  .brand-name{display:none}
+  .nav a:not(.nav-cta){display:none}
+  .nav .nav-cta{padding:10px 15px}
+  .icon-btn{width:34px;height:34px}
+  .icon-btn svg{width:15px;height:15px}
+  main{padding-top:78px}
 
-h1, h2, h3 {
-  font-weight: 600;
-}
-
-p {
-  color: var(--text-muted);
-}
-
-/* ================= HEADER/NAV ================= */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: transparent;
-  backdrop-filter: none;
-  padding: 20px 0;
-  z-index: 1000;
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-header.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-header.scrolled .logo-link,
-header.scrolled .nav-links a {
-  color: var(--text-dark);
-}
-
-header.scrolled .nav-links a:hover {
-  color: var(--primary);
-}
-
-header.scrolled .nav-links .login-btn {
-  background: var(--primary);
-  color: var(--white);
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: var(--white);
-  font-weight: 600;
-  font-size: 18px;
-  transition: color 0.3s;
-}
-
-.logo {
-  height: 40px;
-  width: auto;
-  margin-right: 12px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  align-items: center;
-}
-
-.nav-links a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 15px;
-  transition: color 0.3s;
-  font-weight: 500;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-.nav-links .login-btn {
-  background: var(--primary);
-  color: var(--white);
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-weight: 500;
-  transition: transform 0.2s;
-}
-
-.nav-links .login-btn:hover {
-  transform: translateY(-1px);
-  color: var(--white);
-}
-
-/* ================= HERO ================= */
-.hero {
-  min-height: 100vh;
-  background: radial-gradient(circle at top right, #1e293b, #020617);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  padding-top: 80px;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.hero-text .badge {
-  display: inline-block;
-  background: rgba(56, 189, 248, 0.15);
-  color: var(--primary);
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 13px;
-  margin-bottom: 24px;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-}
-
-.hero h1 {
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  line-height: 1.1;
-  margin-bottom: 24px;
-}
-
-.hero p {
-  color: #cbd5f5;
-  max-width: 520px;
-  margin-bottom: 42px;
-  font-size: 18px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.hero-actions .primary {
-  background: var(--primary);
-  color: var(--bg-dark);
-  padding: 16px 36px;
-  border-radius: 14px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: transform 0.2s;
-}
-
-.hero-actions .primary:hover {
-  transform: translateY(-2px);
-}
-
-.hero-actions .secondary {
-  padding: 16px 36px;
-  border-radius: 14px;
-  font-size: 16px;
-  text-decoration: none;
-  color: var(--white);
-  border: 1px solid rgba(255,255,255,0.35);
-  transition: background 0.3s;
-}
-
-.hero-actions .secondary:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-/* HERO VISUAL */
-.hero-visual {
-  position: relative;
-  height: 360px;
-}
-
-.glow {
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, #38bdf8, transparent 60%);
-  filter: blur(90px);
-  top: -40px;
-  right: -40px;
-  animation: float 6s ease-in-out infinite;
-}
-
-.glass-card {
-  position: relative;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(16px);
-  border-radius: 22px;
-  padding: 42px;
-  max-width: 300px;
-  margin-top: 120px;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.glass-card h3 {
-  margin-bottom: 10px;
-}
-
-.glass-card p {
-  color: #cbd5f5;
-  font-size: 14px;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
-  100% { transform: translateY(0); }
-}
-
-/* ================= ABOUT ================= */
-.about {
-  background: var(--bg-light);
-  text-align: center;
-}
-
-.about p {
-  max-width: 760px;
-  margin: 24px auto 0;
-  font-size: 17px;
-}
-
-/* ================= SERVICES ================= */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 56px;
-}
-
-.service {
-  background: var(--white);
-  padding: 38px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e2e8f0;
-}
-
-.service:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-}
-
-.service h3 {
-  margin-bottom: 14px;
-  color: var(--text-dark);
-}
-
-.service p {
-  font-size: 15px;
-}
-
-/* ================= WHY VENIX ================= */
-.why {
-  background: linear-gradient(135deg, #0b1220, #020617);
-  color: var(--white);
-}
-
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  margin-top: 56px;
-}
-
-.why-item {
-  background: rgba(255,255,255,0.06);
-  padding: 34px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: background 0.3s;
-}
-
-.why-item:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-.why-item h3 {
-  margin-bottom: 12px;
-}
-
-.why-item p {
-  color: #cbd5f5;
-  font-size: 14px;
-}
-
-/* ================= CTA ================= */
-.cta {
-  text-align: center;
-}
-
-.cta p {
-  max-width: 620px;
-  margin: 22px auto 44px;
-  font-size: 17px;
-}
-
-.cta button {
-  background: var(--primary);
-  color: var(--white);
-  padding: 18px 38px;
-  border-radius: 14px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: transform 0.2s, background 0.3s;
-}
-
-.cta button:hover {
-  transform: translateY(-2px);
-  background: #0ea5e9;
-}
-
-/* ================= FOOTER ================= */
-footer {
-  background: #020617;
-  color: #94a3b8;
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 14px;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 900px) {
-  .nav-links {
-    gap: 20px;
+  .hero{min-height:calc(100svh - 94px);margin-top:0;border-radius:22px}
+  .hero-bg-image img{object-position:center 30%;transform:scale(1.035)}
+  .hero-overlay{
+    background:
+      linear-gradient(180deg,rgba(4,14,10,.04) 0%,rgba(4,14,10,.10) 25%,rgba(4,14,10,.56) 55%,rgba(4,14,10,.96) 100%)
   }
+  .hero-copy{max-width:none;padding:80px 20px 23px}
+  .eyebrow{font-size:9px;margin-bottom:13px}
+  .hero h1{font-size:clamp(43px,13.5vw,62px);line-height:.91;max-width:100%}
+  .hero-lede{font-size:14px;line-height:1.5;max-width:430px;margin:16px 0 18px}
+  .hero-actions{flex-wrap:wrap}
+  .hero .btn{min-height:46px;padding:0 14px;font-size:11px;white-space:nowrap}
+  .hero .btn span{font-size:15px}
+  .hero-meta{gap:7px 12px;margin-top:18px;padding-top:13px;font-size:8px;line-height:1.4}
+  .hero-meta span+span::before{margin-right:12px}
+  .hero-label{right:17px;top:17px;font-size:8px}
 
-  .logo {
-    height: 32px;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .hero p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .hero-visual {
-    display: none;
-  }
-
-  .services-grid,
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
+  .section{padding:78px 0}
+  .section-title{font-size:40px}
+  .metrics{grid-template-columns:1fr 1fr}
+  .metric{min-height:105px;padding:17px 13px}
+  .metric-number{font-size:27px}
+  .dark-panel,.contact{padding:48px 20px;border-radius:24px}
+  .product{min-height:285px;padding:22px}
+  .product-name{font-size:30px}
+  .card{padding:25px 19px;border-radius:23px}
+  .competency{grid-template-columns:1fr;gap:7px}
+  .job{padding:29px 0}
+  .job h3{font-size:23px}
+  .pipeline-svg{display:none}
+  .pipeline-nodes{flex-direction:column}
+  .pipeline-node{flex:none}
+  .contact h2{font-size:44px}
+  footer{flex-direction:column;line-height:1.7}
+  .cursor-glow{display:none}
+  .back-to-top{right:16px;bottom:16px;width:42px;height:42px}
+  .cmdk-overlay{padding-top:10vh}
 }
 
-@media (max-width: 600px) {
-  .nav-links a:not(.login-btn) {
-    display: none;
-  }
+/* VERY SMALL PHONES */
+@media(max-width:380px){
+  .hero-copy{padding-left:16px;padding-right:16px}
+  .hero h1{font-size:41px}
+  .hero-lede{font-size:13px}
+  .hero .btn{padding:0 11px;font-size:10px}
+  .hero-meta{font-size:7.5px}
+}
+
+/* ACCESSIBILITY */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal,.reveal.is-visible{opacity:1;transform:none;transition:none}
+  .hero-bg-image img,.btn,.product{transition:none}
 }
 </style>
 </head>
 
 <body>
+<canvas id="aurora" aria-hidden="true"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="scroll-progress" id="progress"></div>
 
-<!-- HEADER -->
-<header>
-  <div class="nav-container">
-    <a href="/" class="logo-link">
-      <img src="https://client.venix.cloud/assets/images/venix/logo.dark.png" alt="venix cloud Logo" class="logo" />
-    </a>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="https://client.venix.cloud/" class="login-btn">Login</a>
-    </nav>
+<nav class="topbar" id="topbar" aria-label="Main navigation">
+  <a class="brand" href="#about">
+    <span class="brand-mark">SK</span>
+    <span class="brand-name">Stephen Kingsley Femi</span>
+  </a>
+  <div class="nav">
+    <a href="#experience">Experience</a>
+    <a href="#products">Products</a>
+    <a href="#pipeline">Process</a>
+    <a href="#capabilities">Capabilities</a>
+    <button type="button" class="icon-btn" id="paletteBtn" aria-label="Open quick navigation" title="Quick nav (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+    </button>
+    <button type="button" class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"></path></svg>
+    </button>
+    <a class="nav-cta" href="#contact">Let's talk ↗</a>
   </div>
-</header>
+</nav>
+
+<div class="cmdk-overlay" id="cmdkOverlay" role="dialog" aria-modal="true" aria-label="Quick navigation">
+  <div class="cmdk-panel">
+    <input type="text" id="cmdkInput" class="cmdk-input" placeholder="Jump to a section or action…" autocomplete="off">
+    <div class="cmdk-list" id="cmdkList">
+      <button class="cmdk-item" data-action="goto" data-target="#about"><span>Go to Intro</span><small>Section</small></button>
+      <button class="cmdk-item" data-action="goto" data-target="#experience"><span>Go to Experience</span><small>Section</small></button>
+      <button class="cmdk-item" data-action="goto" data-target="#products"><span>Go to Products</span><small>Section</small></button>
+      <button class="cmdk-item" data-action="goto" data-target="#pipeline"><span>Go to Process</span><small>Section</small></button>
+      <button class="cmdk-item" data-action="goto" data-target="#capabilities"><span>Go to Capabilities</span><small>Section</small></button>
+      <button class="cmdk-item" data-action="goto" data-target="#contact"><span>Go to Contact</span><small>Section</small></button>
+      <button class="cmdk-item" data-action="theme"><span>Toggle theme</span><small>Light / Dark</small></button>
+      <button class="cmdk-item" data-action="link" data-href="mailto:thekingfemi32@gmail.com"><span>Email Stephen</span><small>Contact</small></button>
+      <button class="cmdk-item" data-action="link" data-href="cv.pdf"><span>Download CV</span><small>Document</small></button>
+      <button class="cmdk-item" data-action="link" data-href="https://wa.me/2348052880962"><span>Open WhatsApp</span><small>Contact</small></button>
+      <button class="cmdk-item" data-action="link" data-href="https://www.linkedin.com/in/thekingfemi32"><span>Open LinkedIn</span><small>Profile</small></button>
+      <button class="cmdk-item" data-action="link" data-href="https://github.com/Dsking32"><span>Open GitHub</span><small>Profile</small></button>
+    </div>
+    <div class="cmdk-foot"><span>↑↓ navigate</span><span>Enter select</span><span>Esc close</span></div>
+  </div>
+</div>
+
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+</button>
+
+<div class="page">
+<main>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-text">
-      <span class="badge">Vending API Platform</span>
+<section class="hero" id="about">
+  <div class="hero-bg-image">
+    <!-- Replace image.jpg with your own photo. Falls back to the gradient background above if missing. -->
+    <img src="image.jpg" alt="Stephen Kingsley Femi" onload="this.classList.add('is-loaded')" onerror="this.remove()">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-label">SK / 2026</div>
 
-      <h1>
-        Power Your Digital Vending<br />
-        with Enterprise APIs
-      </h1>
+  <div class="hero-copy">
+    <div class="eyebrow reveal">Technical Project Manager</div>
 
-      <p>
-        venix cloud delivers robust B2B vending APIs that enable seamless integration,
-        realtime management, and scalable operations for digital businesses across Africa.
-      </p>
+    <h1 class="reveal delay-1">
+      Turning ideas into
+      <span class="hero-title-accent">impactful solutions.</span>
+    </h1>
 
-      <div class="hero-actions">
-        <button class="primary" onclick="scrollToSection('about')">
-          Explore API Solutions
-        </button>
-        <a href="https://client.venix.cloud/" class="secondary">Access Dashboard</a>
-      </div>
+    <p class="hero-lede reveal delay-2">
+      I bridge technology, people and business to deliver scalable digital products and reliable technical projects.
+    </p>
+
+    <div class="hero-actions reveal delay-3">
+      <a class="btn btn-primary magnetic" href="#experience">
+        View my work <span>→</span>
+      </a>
+      <a class="btn btn-secondary magnetic" href="mailto:thekingfemi32@gmail.com">
+        Get in touch
+      </a>
+      <!-- Place your CV file (named cv.pdf) in the same folder as this page. -->
+      <a class="btn btn-secondary magnetic" href="cv.pdf" download="Stephen-Kingsley-Femi-CV.pdf">
+        Download CV <span>↓</span>
+      </a>
     </div>
 
-    <div class="hero-visual">
-      <div class="glow"></div>
-      <div class="glass-card">
-        <h3>API First Platform</h3>
-        <p>Integrate • Manage • Scale</p>
-      </div>
+    <div class="hero-meta reveal delay-3">
+      <span>Lagos, Nigeria</span>
+      <span>Project Management</span>
+      <span>Tech & Innovation</span>
+      <span id="localTime">Lagos time —:—</span>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="about">
-  <div class="container">
-    <h2>What is venix cloud?</h2>
-    <p>
-      venix cloud is a comprehensive B2B vending API system designed for businesses that need
-      reliable, scalable digital vending solutions. Our platform enables seamless API integration,
-      provides intuitive dashboard management, and supports everything from airtime and data to
-      utility payments and digital services across Africa.
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-kicker">01 / Experience</div>
+      <h2 class="section-title">Making complicated delivery feel simple.</h2>
+    </div>
+    <p class="section-intro">
+      I work at the intersection of technical execution, product decisions and operational reliability, keeping teams aligned from first requirement to production.
     </p>
   </div>
-</section>
 
-<!-- SERVICES -->
-<section id="services">
-  <div class="container">
-    <h2>Core API Solutions</h2>
+  <div class="metrics reveal">
+    <div class="metric"><div class="metric-number">E2E</div><span class="metric-label">Project delivery ownership</span></div>
+    <div class="metric"><div class="metric-number">API</div><span class="metric-label">Integration & systems fluency</span></div>
+    <div class="metric"><div class="metric-number">UAT</div><span class="metric-label">Quality & go-live readiness</span></div>
+    <div class="metric"><div class="metric-number">3+</div><span class="metric-label">Network ecosystem exposure</span></div>
+  </div>
 
-    <div class="services-grid">
-      <div class="service">
-        <h3>Vending APIs</h3>
-        <p>Complete suite of APIs for airtime, data, bills payment, and digital services with instant provisioning.</p>
+  <div class="experience-list">
+    <article class="job reveal">
+      <div class="job-date">ONGOING<small>Technical delivery engagement<br>Nigeria</small></div>
+      <div>
+        <h3>Technical Project Manager</h3>
+        <div class="company">VAS & digital service delivery</div>
+        <ul>
+          <li>Lead end-to-end delivery of VAS rollouts across MTN, Glo and Airtel, managing integration testing, UAT and go-live within SLA.</li>
+          <li>Coordinate internal engineers, third-party content providers and network operator contacts to keep projects on schedule.</li>
+          <li>Manage API integrations between internal platforms and telecom aggregators, maintaining provisioning accuracy and billing synchronisation.</li>
+          <li>Bridge commercial and engineering teams on pricing, feature and rollout decisions.</li>
+          <li>Build monitoring dashboards that surface service-delivery issues before they reach customers.</li>
+        </ul>
+        <span class="tag">Ongoing engagement</span>
       </div>
+    </article>
 
-      <div class="service">
-        <h3>Dashboard Management</h3>
-        <p>Powerful admin dashboard to monitor transactions, manage users, track analytics, and control operations.</p>
+    <article class="job reveal delay-1">
+      <div class="job-date">12.2023 to 10.2024<small>Bricks International Ideal Limited<br>Lagos, Nigeria</small></div>
+      <div>
+        <h3>Project Manager, Technical Operations</h3>
+        <div class="company">Enterprise messaging infrastructure</div>
+        <ul>
+          <li>Managed bulk SMS delivery infrastructure across multiple enterprise clients, owning system reliability and quality.</li>
+          <li>Built an automated daily SMS traffic reporting system, reducing manual reporting load and improving operational visibility.</li>
+          <li>Partnered with technical teams at MTN, Glo and Airtel to troubleshoot delivery failures and improve success rates.</li>
+          <li>Supported third-party SMS gateway integrations and message-routing API configuration.</li>
+        </ul>
+        <span class="tag">Delivered</span>
       </div>
-
-      <div class="service">
-        <h3>Seamless Integration</h3>
-        <p>RESTful APIs with comprehensive documentation, webhooks, and SDKs for rapid deployment.</p>
-      </div>
-    </div>
+    </article>
   </div>
 </section>
 
-<!-- WHY VENIX -->
-<section class="why">
-  <div class="container">
-    <h2>Why Choose venix cloud?</h2>
+<!-- PRODUCTS -->
+<section class="dark-panel" id="products">
+  <div class="section-kicker reveal">02 / Product ownership</div>
+  <h2 class="section-title reveal">Building products, not just managing tickets.</h2>
+  <p class="section-intro reveal delay-1">
+    Hands-on product ownership across messaging and digital platforms, from feature definition and prioritisation to delivery and operations.
+  </p>
 
-    <div class="why-grid">
-      <div class="why-item">
-        <h3>B2B Focused</h3>
-        <p>Built specifically for businesses that need reliable vending infrastructure at scale.</p>
-      </div>
+  <div class="product-grid reveal delay-2">
+    <a class="product" href="https://mesaj.cloud/" target="_blank" rel="noopener">
+      <div class="product-top"><div class="product-name">Mesaj</div><div class="product-year">2025</div></div>
+      <div class="product-type">B2B messaging platform</div>
+      <p>Full-stack business communications platform offering bulk SMS, WhatsApp API, voice and IVR to Nigerian businesses. Independently scoped features, prioritised the roadmap and shipped message scheduling and delivery reporting.</p>
+      <div class="product-foot">Product ownership · Roadmap · Delivery ↗</div>
+    </a>
 
-      <div class="why-item">
-        <h3>99.9% Uptime</h3>
-        <p>Enterprise grade reliability with redundant systems and real time monitoring.</p>
-      </div>
-
-      <div class="why-item">
-        <h3>Fast Integration</h3>
-        <p>Developer friendly APIs with clear docs, test environments, and responsive support.</p>
-      </div>
-
-      <div class="why-item">
-        <h3>Scalable Growth</h3>
-        <p>From startup MVPs to enterprise volumes, our infrastructure grows with you.</p>
-      </div>
-    </div>
+    <a class="product" href="https://turnaj.mobi/" target="_blank" rel="noopener">
+      <div class="product-top"><div class="product-name">Turnaj</div><div class="product-year">2025</div></div>
+      <div class="product-type">Fantasy sports platform</div>
+      <p>Dynamic fantasy football experience connecting real-world player performance to virtual team scoring, with public and private leagues and live competition mechanics.</p>
+      <div class="product-foot">Platform · Product operations · Delivery ↗</div>
+    </a>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta">
-  <div class="container">
-    <h2>Ready to Get Started?</h2>
-    <p>
-      Join leading digital businesses using venix cloud to power their vending operations.
-      Access your dashboard to manage your services, view analytics, and scale your business.
+<!-- PIPELINE -->
+<section class="section" id="pipeline">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-kicker">03 / How it moves</div>
+      <h2 class="section-title">One request, five handoffs, zero surprises.</h2>
+    </div>
+    <p class="section-intro">
+      A simplified look at what actually happens between a client hitting send and a message landing on a subscriber's phone.
     </p>
-    <button onclick="window.location.href='https://client.venix.cloud/'">
-      Access Your Dashboard
-    </button>
+  </div>
+
+  <div class="pipeline reveal delay-1">
+    <svg class="pipeline-svg" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+      <path id="pipelinePath" d="M20,30 L980,30" />
+      <path id="pipelineProgress" d="M20,30 L980,30" />
+      <circle class="pipeline-dot" r="7">
+        <animateMotion dur="4.5s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#pipelinePath"></mpath>
+        </animateMotion>
+      </circle>
+    </svg>
+    <div class="pipeline-nodes">
+      <div class="pipeline-node"><span>01</span>Client request</div>
+      <div class="pipeline-node"><span>02</span>API gateway</div>
+      <div class="pipeline-node"><span>03</span>Provisioning</div>
+      <div class="pipeline-node"><span>04</span>Network (MTN / Glo / Airtel)</div>
+      <div class="pipeline-node"><span>05</span>Delivery confirmed</div>
+    </div>
   </div>
 </section>
+
+<!-- CAPABILITIES -->
+<section class="section" id="capabilities">
+  <div class="two-col">
+    <div class="card reveal">
+      <div class="section-kicker">04 / Capabilities</div>
+      <h2 class="section-title">Where I add value.</h2>
+
+      <div class="competencies">
+        <div class="competency"><strong>Project delivery</strong><span>End-to-end planning, execution and stakeholder coordination across Agile and Waterfall.</span></div>
+        <div class="competency"><strong>Technical fluency</strong><span>Node.js, React, PostgreSQL, MySQL, Redis and REST APIs.</span></div>
+        <div class="competency"><strong>Integration</strong><span>API integrations, provisioning, billing synchronisation and third-party gateway coordination.</span></div>
+        <div class="competency"><strong>Product ownership</strong><span>Feature scoping, prioritisation, roadmap decisions and delivery for live products.</span></div>
+        <div class="competency"><strong>Risk & quality</strong><span>Monitoring, proactive issue resolution, UAT and operational quality control.</span></div>
+        <div class="competency"><strong>Stakeholders</strong><span>Engineers, network operators, aggregators, enterprise clients and commercial teams.</span></div>
+      </div>
+
+      <div class="chips">
+        <span class="chip">Jira</span><span class="chip">Postman</span><span class="chip">Git</span>
+        <span class="chip">Notion</span><span class="chip">Slack</span><span class="chip">Trello</span>
+      </div>
+    </div>
+
+    <div class="card reveal delay-1">
+      <div class="section-kicker">05 / Education</div>
+      <h2 class="section-title">Technical foundation.</h2>
+
+      <div class="education">
+        <strong>B.Sc. Computer Science</strong>
+        <span>Veritas University, Abuja, Nigeria</span>
+        <span>2019.10 to 2023.07</span>
+        <span class="honour">Second Class Upper</span>
+      </div>
+
+      <div class="section-kicker" style="margin-top:31px">Certifications & training</div>
+      <div class="certs">
+        <div class="cert"><b>2025</b><span>PMP Exam Prep, 35h, Udemy</span></div>
+        <div class="cert"><b>2025</b><span>DevOps: Beginner to Advanced, Udemy</span></div>
+        <div class="cert"><b>2025</b><span>Data Science Bootcamp, 365 Careers</span></div>
+        <div class="cert"><b>2023</b><span>Cyber Ops Associate, Cisco</span></div>
+        <div class="cert"><b>2023</b><span>IT Essentials, Cisco</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <div class="section-kicker">06 / Contact</div>
+  <h2>Have a complex project that needs to ship?</h2>
+  <p>
+    I'm interested in technical project leadership, product delivery and digital infrastructure roles where strong coordination and technical understanding make a measurable difference.
+  </p>
+  <div class="contact-actions">
+    <a class="btn btn-primary magnetic" href="mailto:thekingfemi32@gmail.com">thekingfemi32@gmail.com ↗</a>
+    <button type="button" class="btn btn-secondary magnetic copy-email" data-email="thekingfemi32@gmail.com">Copy email</button>
+    <a class="btn btn-secondary magnetic" href="https://wa.me/2348052880962" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-secondary magnetic" href="tel:+2347041748361">Call: 0704 174 8361</a>
+  </div>
+</section>
+
+</main>
 
 <footer>
-  © <span id="year"></span> venix cloud by Venix Cloud. All rights reserved.
+  <span>Stephen Kingsley Femi · Technical Project Manager</span>
+  <span>
+    <a href="https://www.linkedin.com/in/thekingfemi32" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a> ·
+    <a href="https://github.com/Dsking32" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a> · Lagos, Nigeria
+  </span>
 </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/motion@12.23.12/dist/motion.js"></script>
 
 <script>
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const progress = document.getElementById('progress');
+const topbar = document.getElementById('topbar');
+const glow = document.getElementById('cursorGlow');
+
+window.addEventListener('scroll', () => {
+  const height = document.documentElement.scrollHeight - innerHeight;
+  progress.style.width = (scrollY / Math.max(height, 1) * 100) + '%';
+  topbar.classList.toggle('scrolled', scrollY > 20);
+}, {passive:true});
+
+/* Reveal on scroll */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:.12});
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ---------- THEME (light / dark) ---------- */
+(function(){
+  const root = document.documentElement;
+  let stored = null;
+  try { stored = localStorage.getItem('sk-theme'); } catch(e) {}
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  root.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+
+  function setTheme(t){
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('sk-theme', t); } catch(e) {}
+  }
+  window.skToggleTheme = function(){
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  };
+  document.getElementById('themeToggle').addEventListener('click', window.skToggleTheme);
+})();
+
+/* ---------- SCROLL-SPY NAV ---------- */
+(function(){
+  const navLinks = {};
+  document.querySelectorAll('.nav a[href^="#"]').forEach(a => {
+    navLinks[a.getAttribute('href').slice(1)] = a;
+  });
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting && navLinks[entry.target.id]){
+        Object.values(navLinks).forEach(a => a.classList.remove('active'));
+        navLinks[entry.target.id].classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(navLinks).forEach(id => {
+    const el = document.getElementById(id);
+    if(el) spy.observe(el);
+  });
+})();
+
+/* ---------- LIVE LAGOS TIME ---------- */
+(function(){
+  const el = document.getElementById('localTime');
+  if(!el) return;
+  function tick(){
+    try{
+      const time = new Intl.DateTimeFormat('en-GB', {
+        timeZone:'Africa/Lagos', hour:'2-digit', minute:'2-digit'
+      }).format(new Date());
+      el.textContent = 'Lagos time ' + time;
+    }catch(e){ el.textContent = 'Lagos, Nigeria'; }
+  }
+  tick();
+  setInterval(tick, 30000);
+})();
+
+/* ---------- COPY EMAIL ---------- */
+(function(){
+  const btn = document.querySelector('.copy-email');
+  if(!btn) return;
+  const original = btn.textContent;
+  btn.addEventListener('click', async () => {
+    const email = btn.getAttribute('data-email');
+    let copied = false;
+    try{
+      await navigator.clipboard.writeText(email);
+      copied = true;
+    }catch(e){
+      try{
+        const ta = document.createElement('textarea');
+        ta.value = email; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        copied = true;
+      }catch(e2){ copied = false; }
+    }
+    btn.textContent = copied ? 'Copied ✓' : 'Copy failed';
+    setTimeout(() => { btn.textContent = original; }, 1800);
+  });
+})();
+
+/* ---------- BACK TO TOP ---------- */
+(function(){
+  const btn = document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('is-visible', scrollY > 700);
+  }, {passive:true});
+  btn.addEventListener('click', () => {
+    window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
+  });
+})();
+
+/* ---------- COMMAND PALETTE ---------- */
+(function(){
+  const overlay = document.getElementById('cmdkOverlay');
+  const input = document.getElementById('cmdkInput');
+  const list = document.getElementById('cmdkList');
+  const items = Array.from(list.querySelectorAll('.cmdk-item'));
+  const openBtn = document.getElementById('paletteBtn');
+  let lastFocused = null;
+
+  function visibleItems(){ return items.filter(i => !i.hasAttribute('hidden')); }
+  function setActive(item){
+    items.forEach(i => i.classList.remove('is-active'));
+    if(item) item.classList.add('is-active');
+  }
+  function open(){
+    lastFocused = document.activeElement;
+    overlay.classList.add('is-open');
+    input.value = '';
+    items.forEach(i => i.removeAttribute('hidden'));
+    setActive(visibleItems()[0]);
+    setTimeout(() => input.focus(), 10);
+  }
+  function close(){
+    overlay.classList.remove('is-open');
+    if(lastFocused) lastFocused.focus();
+  }
+  function runItem(item){
+    if(!item) return;
+    const action = item.getAttribute('data-action');
+    if(action === 'goto'){
+      const target = document.querySelector(item.getAttribute('data-target'));
+      if(target) target.scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+    } else if(action === 'theme'){
+      if(window.skToggleTheme) window.skToggleTheme();
+    } else if(action === 'link'){
+      const href = item.getAttribute('data-href');
+      if(href.startsWith('mailto:') || href.startsWith('tel:')) location.href = href;
+      else window.open(href, '_blank', 'noopener');
+    }
+    close();
+  }
+
+  openBtn.addEventListener('click', open);
+  overlay.addEventListener('click', e => { if(e.target === overlay) close(); });
+  items.forEach(item => {
+    item.addEventListener('click', () => runItem(item));
+    item.addEventListener('pointerenter', () => setActive(item));
+  });
+
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    items.forEach(i => {
+      const match = i.textContent.toLowerCase().includes(q);
+      i.toggleAttribute('hidden', !match);
+    });
+    setActive(visibleItems()[0]);
+  });
+
+  document.addEventListener('keydown', e => {
+    const meta = e.metaKey || e.ctrlKey;
+    if(meta && e.key.toLowerCase() === 'k'){
+      e.preventDefault();
+      overlay.classList.contains('is-open') ? close() : open();
+      return;
+    }
+    if(!overlay.classList.contains('is-open')) return;
+    if(e.key === 'Escape'){ close(); return; }
+    const vis = visibleItems();
+    const activeIndex = vis.findIndex(i => i.classList.contains('is-active'));
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      setActive(vis[Math.min(activeIndex + 1, vis.length - 1)]);
+    } else if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      setActive(vis[Math.max(activeIndex - 1, 0)]);
+    } else if(e.key === 'Enter'){
+      e.preventDefault();
+      runItem(vis[Math.max(activeIndex, 0)]);
+    }
+  });
+})();
+
+if(!reduce){
+
+  /* Cursor glow */
+  window.addEventListener('pointermove', e => {
+    glow.animate(
+      {left:e.clientX+'px',top:e.clientY+'px'},
+      {duration:500,fill:'forwards',easing:'cubic-bezier(.22,1,.36,1)'}
+    );
+  });
+
+  /* Magnetic buttons */
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('pointermove', e => {
+      const r = btn.getBoundingClientRect();
+      btn.style.transform =
+        `translate(${(e.clientX-r.left-r.width/2)*.12}px,${(e.clientY-r.top-r.height/2)*.12}px)`;
+    });
+    btn.addEventListener('pointerleave', () => btn.style.transform = '');
+  });
+
+  /* Motion hero entrance: the legacy CDN build exposes the global as
+     "Motion" (capitalized), not "motion". */
+  if(window.Motion){
+    const {animate, stagger} = window.Motion;
+    animate(
+      '.hero-copy .reveal',
+      {opacity:[0,1], y:[24,0]},
+      {duration:.9, delay:stagger(.08), easing:[.22,1,.36,1]}
+    );
+  }
+
+  /* Card tilt */
+  document.querySelectorAll('.product, .card').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5;
+      const py = (e.clientY - r.top) / r.height - .5;
+      card.style.transform = `perspective(700px) rotateX(${py * -6}deg) rotateY(${px * 6}deg) translateY(-4px)`;
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
+/* Aurora background */
+(function(){
+  const canvas = document.getElementById('aurora');
+  const ctx = canvas.getContext('2d');
+  let w, h, blobs;
 
-// Change header background on scroll
-window.addEventListener('scroll', function() {
-  const header = document.querySelector('header');
-  if (window.scrollY > 100) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
+  function resize(){
+    w = canvas.width = innerWidth;
+    h = canvas.height = innerHeight;
   }
-});
-</script>
+  resize();
+  window.addEventListener('resize', resize);
 
+  const palette = ['rgba(21,144,106,.22)', 'rgba(114,223,181,.18)', 'rgba(15,42,32,.22)'];
+  blobs = palette.map((color, i) => ({
+    x: w * (.2 + i * .3), y: h * (.25 + i * .2),
+    r: Math.max(w, h) * .28,
+    color,
+    dx: (Math.random() - .5) * .25,
+    dy: (Math.random() - .5) * .25
+  }));
+
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    blobs.forEach(b => {
+      b.x += b.dx; b.y += b.dy;
+      if(b.x < 0 || b.x > w) b.dx *= -1;
+      if(b.y < 0 || b.y > h) b.dy *= -1;
+      const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+      g.addColorStop(0, b.color);
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
+    });
+  }
+
+  if(reduce){
+    draw();
+  } else {
+    (function loop(){ draw(); requestAnimationFrame(loop); })();
+  }
+})();
+</script>
 </body>
 </html>
